@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('atencion_centros', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->enum('tipo',['HOSPITAL','CENTRO SALUD']);
-            $table->foreignId('municipio_id')->constrained();
-            $table->foreignId('salud_sistema_id')->constrained();
-            $table->string('lat',100);
-            $table->string('lng',100);
-            $table->string('ciudad',70);
+        Schema::create('attention_centers', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->enum('type',['HOSPITAL','CENTRO SALUD']);
+           $table->foreignId('address_id')->constrained();
+           $table->uuid('healthcare_system_id');
+            $table->foreign('healthcare_system_id')->references('id')->on('healthcare_systems');
+            $table->string('lat');
+            $table->string('lng');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('atencion_centros');
+        Schema::dropIfExists('attention_centers');
     }
 };

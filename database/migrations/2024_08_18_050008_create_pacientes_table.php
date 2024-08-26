@@ -11,20 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pacientes', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('nombres');
-            $table->string('apellidos');
-            $table->char('cedula',16)->nullable();
-            $table->string('partida_nacimiento')->nullable();
-            $table->enum('tipo_sangre',['A+','A-','B+','B-','AB+', 'AB-','O+','O+']);
-            $table->enum('estado_civil',['SOLTERO','CASADO','DIVORCIADO','VIUDO','UNION LIBRE']);
-            $table->enum('etnia',['MESTIZO','MISKITO']);
-            $table->foreignId('direccion_id')->references('id')->on('direcciones');
-            $table->foreignId('salud_sistema_id')->constrained();
-            $table->char('numero',8)->nullable();
-            $table->string('foto',100);
-            $table->date('nacimiento');
+        Schema::create('patients', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->string('lastName');
+            $table->char('identification',16)->nullable();
+            $table->string('birth_certificate')->nullable();
+            $table->enum('blood_type',['A+','A-','B+','B-','AB+', 'AB-','O+','O+'])->nullable();
+            $table->enum('marital_status',['SOLTERO','CASADO','DIVORCIADO','VIUDO','UNION LIBRE']);
+            $table->enum('gender',['M','F']);
+            $table->foreignId('address_id')->constrained();
+            $table->uuid('healthcare_system_id')->nullable();
+            $table->foreign('healthcare_system_id')->references('id')->on('healthcare_systems');
+            $table->char('phone_number',8)->nullable();
+            $table->string('profile_photo')->nullable();
+            $table->date('birthdate');
+            $table->enum('role',['USER'])->default('USER');
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pacientes');
+        Schema::dropIfExists('patients');
     }
 };

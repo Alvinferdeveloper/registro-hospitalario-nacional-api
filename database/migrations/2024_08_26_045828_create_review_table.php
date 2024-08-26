@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('consultations', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->text('review');
             $table->uuid('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients');
-            $table->uuid('health_carer_id');
-            $table->foreign('health_carer_id')->references('id')->on('health_carers');
-            $table->date('date');
-            $table->longText('summary');
-            $table->longText('diagnosis');
-            $table->longText('plan');
             $table->uuid('attention_center_id');
             $table->foreign('attention_center_id')->references('id')->on('attention_centers');
             $table->timestamps();
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('consultations');
+        Schema::dropIfExists('reviews');
     }
 };

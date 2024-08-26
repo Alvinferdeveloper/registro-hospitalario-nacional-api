@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medico_vacuna_pacientes', function (Blueprint $table) {
+        Schema::create('doctor_vaccinates_patients', function (Blueprint $table) {
             $table->id();
-            $table->string('personal_salud_id');
-            $table->foreign('personal_salud_id')->references('id')->on('personal_salud');
-            $table->string('paciente_id');
-            $table->foreign('paciente_id')->references('id')->on('pacientes');
-            $table->foreignId('vacuna_id')->constrained();
-            $table->date('fecha')->default(now());
+            $table->uuid('health_carer_id');
+            $table->foreign('health_carer_id')->references('id')->on('health_carers');
+            $table->uuid('patient_id');
+            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreignId('vaccine_id')->constrained();
+            $table->date('date')->default(now());
+            $table->integer('dose');
+            $table->uuid('attention_center_id');
+            $table->foreign('attention_center_id')->references('id')->on('attention_centers');
+            $table->string('vaccine_code')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medico_vacuna_pacientes');
+        Schema::dropIfExists('doctor_vaccinates_patients');
     }
 };

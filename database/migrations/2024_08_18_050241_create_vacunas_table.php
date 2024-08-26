@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vacunas', function (Blueprint $table) {
+        Schema::create('vaccines', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->integer('dosis');
-            $table->foreignId('salud_sistema_id');
+            $table->string('name');
+            $table->integer('doses');
+            $table->uuid('healthcare_system_id');
+            $table->foreign('healthcare_system_id')->references('id')->on('healthcare_systems');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vacunas');
+        Schema::dropIfExists('vaccines');
     }
 };

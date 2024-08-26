@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personal_salud_autoridades', function (Blueprint $table) {
-            $table->string('personal_salud_id');
-            $table->foreign('personal_salud_id')->references('id')->on('personal_salud');
-            $table->foreignId('autoridad_id')->references('id')->on('autoridades');;
-            $table->primary(['personal_salud_id','autoridad_id']);
+        Schema::create('health_carer_roles', function (Blueprint $table) {
+            $table->uuid('health_carer_id');
+            $table->foreign('health_carer_id')->references('id')->on('health_carers');
+            $table->foreignId('role_id')->constrained();
+            $table->primary(['health_carer_id','role_id']);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal_salud_autoridades');
+        Schema::dropIfExists('health_carer_roles');
     }
 };

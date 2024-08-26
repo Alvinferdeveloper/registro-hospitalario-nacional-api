@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('direcciones', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('departamento_id')->constrained();
-            $table->foreignId('municipio_id')->constrained();
-            $table->string('comarca');
-            $table->string('direccion',300);
+            $table->foreignId('departament_id')->constrained();
+            $table->string('municipio');
+            $table->string('city');
+            $table->string('adresss',300);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('direcciones');
+        Schema::dropIfExists('addresses');
     }
 };

@@ -11,14 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personal_salud', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('nombres');
-            $table->string('apellidos');
-            $table->date('nacimiento');
-            $table->foreignId('atencion_centro_id')->constrained();
-            $table->enum('area',['MEDICINA INTERNA']);
-            $table->enum('tipo',['DOCTOR', 'ENFERMERO']);
+        Schema::create('health_carers', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->unique('id');
+            $table->string('name');
+            $table->string('lastName');
+            $table->date('birthdate');
+            $table->uuid('attention_center_id')->nullable();
+            $table->foreign('attention_center_id')->references('id')->on('attention_centers');
+            $table->enum('area',['MEDICINA INTERNA', 'ADMINISTRACION']);
+            $table->enum('tYPE',['DOCTOR', 'ENFERMERO',"ADMIN"]);
+            $table->string('phone_number');
+            $table->string('email');
+            $table->boolean('active')->default(true);
+            $table->uuid('admin_creator')->nullable();
+            $table->foreign('admin_creator')->references('id')->on('admins');
+            $table->uuid('healthcare_system_id');
+            $table->foreign('healthcare_system_id')->references('id')->on('healthcare_systems');
+            $table->uuid('health_carer_creator')->nullable();
+            $table->foreign('health_carer_creator')->references('id')->on('health_carers');
             $table->timestamps();
         });
     }
@@ -28,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal_salud');
+        Schema::dropIfExists('health_carers');
     }
 };

@@ -7,9 +7,42 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    protected $fillable = ['id', 'name', 'apellido',
-                        'identificacion', 'birth_certificate', 'blood_type',
-                        'marital_status','gender','address_id','healthcare_system_id',
-                        'created_at','phone_number','profile_photo','nacimiento','role',
-                        'email','passwprd' ];
+    protected $fillable = [
+        'id',
+        'name',
+        'lastName',
+        'identification',
+        'birth_certificate',
+        'blood_type',
+        'marital_status',
+        'gender',
+        'address_id',
+        'healthcare_system_id',
+        'phone_number',
+        'profile_photo',
+        'birthdate',
+        'role',
+        'email',
+        'password'
+    ];
+
+    public function address(){
+        return $this->belongsTo(Address::class,'address_id');
+    }
+
+    public function healthCareSystem(){
+        return $this->belongsTo(healthCareSystem::class,'healthcare_system_id');
+    }
+
+    public function vaccunations(){
+        return $this->hasMany(DoctorVaccinatesPatient::class,'patient_id');
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class,'patient_id');
+    }
+
+    public function consultations(){
+        return $this->hasMany(Consultation::class,'patient_id');
+    }
 }

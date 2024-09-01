@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('departament_id')->constrained();
             $table->string('municipio');
             $table->string('city');
-            $table->string('adresss',300);
+            $table->string('address',300);
             $table->timestamps();
         });
     }

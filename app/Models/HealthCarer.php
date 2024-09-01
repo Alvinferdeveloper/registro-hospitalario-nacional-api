@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class HealthCarer extends Model
 {
+    use HasUuids;
     protected $table = "health_carer";
     protected $fillable = [
         'id',
@@ -46,5 +48,9 @@ class HealthCarer extends Model
 
     public function healthCarerCreator(){
         return $this->belongsTo(HealthCarer::class,'health_carer_creator');
+    }
+
+    public function roles(){
+        return $this->belongsToMany(HealthCarer::class,'admin_roles');
     }
 }

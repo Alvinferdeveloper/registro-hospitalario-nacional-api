@@ -11,6 +11,10 @@ class Role extends Model
    ['id','name'];
 
    public function admins(){
-      return $this->hasMany(Admin::class, 'admin_role');
+      return $this->belongsToMany(Admin::class, 'admin_roles');
+   }
+
+   public function healthCarers(){
+      return $this->belongsToMany(HealthCarer::class, 'admin_roles');
    }
 }

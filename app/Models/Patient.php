@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
+    use HasUuids;
     protected $fillable = [
         'id',
         'name',
@@ -21,7 +23,6 @@ class Patient extends Model
         'phone_number',
         'profile_photo',
         'birthdate',
-        'role',
         'email',
         'password'
     ];

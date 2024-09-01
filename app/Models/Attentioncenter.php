@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Attentioncenter extends Model
 {
+    use HasUuids;
     protected $table= "attention_centers";
     protected $fillable = ['id', 'name', 'type','address_id','healthcare_system_id',
                             'lat','ing'];

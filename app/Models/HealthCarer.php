@@ -5,24 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
-class HealthCarer extends Model
+class HealthCarer extends Authenticatable
 {
     use HasUuids;
-    protected $table = "health_carer";
+    use HasApiTokens;
+    protected $table = "health_carers";
+
     protected $fillable = [
         'id',
         'name',
         'lastName',
-        'birthday',
+        'identification',
+        'birthdate',
         'attention_center_id',
         'area',
+        'password',
         'type',
         'phone_number',
         'email',
         'active',
         'admin_creator',
-        'healtcare_system_id',
+        'healthcare_system_id',
         'health_carer_creator'
     ];
 
@@ -51,6 +57,6 @@ class HealthCarer extends Model
     }
 
     public function roles(){
-        return $this->belongsToMany(HealthCarer::class,'admin_roles');
+        return $this->belongsToMany(Role::class,'health_carer_roles');
     }
 }

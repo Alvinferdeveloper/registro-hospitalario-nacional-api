@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class RegisterUserRequest extends FormRequest
+class RegisterHealthCarerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,22 +27,16 @@ class RegisterUserRequest extends FormRequest
             //
             'name' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
-            'identification' => 'required|string|max:16|unique:patients,identification',
-            'departament_id' => 'required',
-            'municipio' => 'required|string',
-            'city' => 'required|string',
-            'address' => 'required|string',
-            'birth_certificate' => 'nullable|string|max:100',
-            'blood_type' => 'nullable|string|in:A+, A-, B+, B-, AB+, AB-, O+, O-',
-            'marital_status' => 'required|string|in:SOLTERO,CASADO,DIVORCIADO,VIUDO, UNION LIBRE',
-            'gender' => 'required|string|in:M,F',
+            'identification' => 'required|string|max:20|unique:health_carers,identification',
+            'birthdate' => 'required|date|before:today',
+            'attention_center_id'=> 'nullable',
+            'area'=> 'required|string|in:MEDICINA INTERNA, ADMINISTRACION',
+            'type'=> 'required|string|in:DOCTOR,ENFERMERO,ADMIN',
             'phone_number' => 'required|string|min:8|max:15',
-            'birthDate' => 'required|date|before:today',
-            'email' => 'required|email|max:255|unique:patients,email',
-            'password' => 'required|string|min:8',
+            'email' => 'required|email|max:255|unique:health_carers,email',        
+            
         ];
     }
-
     public function failedValidation(Validator $validator){
         throw new HttpResponseException(response()->json([
             'data' => null,
@@ -51,4 +45,6 @@ class RegisterUserRequest extends FormRequest
             'validation' => $validator->errors()
         ], 400));
     }
+
+
 }

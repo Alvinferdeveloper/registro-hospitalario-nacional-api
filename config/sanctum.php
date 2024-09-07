@@ -1,7 +1,6 @@
 <?php
 
 use Laravel\Sanctum\Sanctum;
-
 return [
 
     /*
@@ -46,7 +45,10 @@ return [
     |
     */
 
-    'expiration' => null,
+  'expiration' => 60,
+    'models' => [
+    'user' => App\Models\Patient::class
+],
 
     /*
     |--------------------------------------------------------------------------

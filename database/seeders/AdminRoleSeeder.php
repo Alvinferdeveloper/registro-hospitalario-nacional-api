@@ -17,7 +17,7 @@ class AdminRoleSeeder extends Seeder
     public function run(): void
     {
         $admin = Admin::first();
-        $role = Role::find(1);
+        $role = Role::first();
         $admin->roles()->attach($role->id);
     }
 }

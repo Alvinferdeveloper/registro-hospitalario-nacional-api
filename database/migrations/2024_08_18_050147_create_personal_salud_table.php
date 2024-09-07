@@ -15,14 +15,16 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->unique('id');
             $table->string('name');
+            $table->string('identification');
             $table->string('lastName');
             $table->date('birthdate');
             $table->uuid('attention_center_id')->nullable();
             $table->foreign('attention_center_id')->references('id')->on('attention_centers');
             $table->enum('area',['MEDICINA INTERNA', 'ADMINISTRACION']);
-            $table->enum('tYPE',['DOCTOR', 'ENFERMERO',"ADMIN"]);
+            $table->enum('type',['DOCTOR', 'ENFERMERO',"ADMIN"]);
             $table->string('phone_number');
             $table->string('email');
+            $table->string('password');
             $table->boolean('active')->default(true);
             $table->uuid('admin_creator')->nullable();
             $table->foreign('admin_creator')->references('id')->on('admins');

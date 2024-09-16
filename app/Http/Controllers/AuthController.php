@@ -22,7 +22,7 @@ class AuthController extends Controller
         $patientDoc =  PatientService::registerPatient($validatedPatient, $addressDoc->id);
         $token = $patientDoc->createToken('Personal Access Token')->plainTextToken;
         cookie()->queue(cookie('token', $token, 60));
-        return response()->json($token, 201);
+        return response()->json(["patient"=>$patientDoc, "token"=> $token], 201);
     }
 
     public function login(Request $request){
@@ -45,12 +45,11 @@ class AuthController extends Controller
         $user = $request->user();
         $healthCarerValidated = $request->validated();
         $healthCarer = HealthCarerService::registerHealthCarer($healthCarerValidated, $user);
-        $token = $healthCarer->createToken('Personal Access Token')->plainTextToken;
-        return response()->json(['token'=> $token],200);
+        return response()->json(['healtCarer'=> $healthCarer],200);
     }
 
     public function healthCarerLogin(Request $request){
-        $userName = $request->input('email');
+        $userName = $request->input('userName');
         $password = $request->input('password');
         $healthCarer = HealthCarerService::healtCarerRegistered($userName, $password);
         if($healthCarer){

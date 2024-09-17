@@ -26,7 +26,8 @@ class PatientService{
             'phone_number' => $patient['phone_number'],
             'birthdate' => $patient['birthDate'],
             'email' => $patient['email'],
-            'password' => Hash::make($patient['password'])
+            'password' => Hash::make($patient['password']),
+            'profile_photo' => "https://lmytqidhsbbnxltkcbsz.supabase.co/storage/v1/object/sign/patientsProfile/patientProfile.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwYXRpZW50c1Byb2ZpbGUvcGF0aWVudFByb2ZpbGUuanBnIiwiaWF0IjoxNzI2NTMyMjk0LCJleHAiOjE3NTgwNjgyOTR9.i4zCNC30IPqrYMcuLD4DZG2jWb26iTNaOdYkSj5Qg8M&t=2024-09-17T00%3A18%3A23.709Z"
         ]);
     }
 }

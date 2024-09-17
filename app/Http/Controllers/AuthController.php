@@ -21,8 +21,7 @@ class AuthController extends Controller
         $addressDoc =  AddressService::insertAddress($validatedPatient);
         $patientDoc =  PatientService::registerPatient($validatedPatient, $addressDoc->id);
         $token = $patientDoc->createToken('Personal Access Token')->plainTextToken;
-        cookie()->queue(cookie('token', $token, 60));
-        return response()->json(["patient"=>$patientDoc, "token"=> $token], 201);
+        return response()->json([ "token"=> $token], 201);
     }
 
     public function login(Request $request){

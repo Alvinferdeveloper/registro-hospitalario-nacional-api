@@ -24,11 +24,11 @@ return new class extends Migration
             $table->uuid('healthcare_system_id')->nullable();
             $table->foreign('healthcare_system_id')->references('id')->on('healthcare_systems');
             $table->char('phone_number',8)->nullable();
-            $table->string('profile_photo')->nullable();
+            $table->text('profile_photo')->nullable();
             $table->date('birthdate');
             $table->enum('role',['USER'])->default('USER');
             $table->string('email')->nullable();
-            $table->string('password')->nullable();
+            $table->string('password');
             $table->timestamps();
         });
     }

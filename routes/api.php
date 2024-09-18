@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PatientController;
 use App\Http\Middleware\CheckUserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,9 @@ Route::middleware(['auth:sanctum', 'checkrole:USER'])->group(function () {
         return response()->json(['name' => 'hola']);
     });
 });
+
+
+//patients
+
+Route::get('/patient/getPatients', [PatientController::class, 'getPatients']);
 

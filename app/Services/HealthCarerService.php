@@ -26,5 +26,10 @@ class HealthCarerService{
         $healthCarer['password'] = Str::random(8);
         return HealthCarer::create($healthCarer);
     }
+
+    public static function getHealthCarer($healthCarerId){
+        $healthCarer = HealthCarer::find($healthCarerId);
+        return $healthCarer;
+    }
 }
 ?>

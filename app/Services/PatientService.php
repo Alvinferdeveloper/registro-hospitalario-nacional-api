@@ -48,5 +48,10 @@ class PatientService{
 
         return $patients;
     }
+
+    public static function getPatient($patientId){
+        $patient = Patient::find($patientId);
+        return $patient;
+    }
 }
 ?>

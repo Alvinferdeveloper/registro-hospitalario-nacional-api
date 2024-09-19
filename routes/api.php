@@ -10,25 +10,23 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+//Auth
 Route::post('/auth/register',[AuthController::class, 'register'] );
 Route::post('/auth/login',[AuthController::class, 'login'] );
-
-//Route::post('/auth/healthcarerregister',[AuthController::class, 'healthCarerRegister'] );
 Route::post('/auth/healthcarerlogin',[AuthController::class, 'healthCarerLogin'] );
 
+
+//HealtCarer
 Route::middleware(['auth:sanctum', 'checkrole:Admin,HealthCarerAdmin'])->group(function () {
     Route::post('/auth/healthcarerregister',[AuthController::class, 'healthCarerRegister'] );
+    Route::get('/patient/getPatientByHealthCarer/{id}', [PatientController::class, 'getPatientByHealthCarer']);
+    Route::get('/patient/getPatients', [PatientController::class, 'getPatients']);
 });
 
 
 Route::middleware(['auth:sanctum', 'checkrole:USER'])->group(function () {
-    Route::post('/auth/user',function(){
-        return response()->json(['name' => 'hola']);
-    });
+    
 });
 
 
-//patients
-
-Route::get('/patient/getPatients', [PatientController::class, 'getPatients']);
 

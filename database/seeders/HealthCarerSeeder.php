@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Attentioncenter;
 use App\Models\HealthCarer;
 use App\Models\HealthcareSystem;
@@ -18,14 +19,14 @@ class HealthCarerSeeder extends Seeder
     {
         //
         $id = HealthcareSystem::first()->id;
-        $idAttentionCenter = Attentioncenter::first()->id;
+        $adminCreatorId = Admin::first()->id;
         HealthCarer::create([
             "name" => "John",
             "lastName" => "Doe",
             "identification" => "1234567891012",
             "birthdate" => "1990-05-15",
-            "attention_center_id" => $idAttentionCenter,
             "area" => "MEDICINA INTERNA",
+            'admin_creator' => $adminCreatorId,
             "type" => "DOCTOR",
             'healthcare_system_id' => $id,
             "phone_number" => "83456789",

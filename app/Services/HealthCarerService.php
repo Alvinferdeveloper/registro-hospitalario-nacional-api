@@ -21,10 +21,12 @@ class HealthCarerService{
         else{
             $healthCarer['health_carer_creator'] = $user->id;
         } 
-
+        $roles = $healthCarer['roles'];
         $healthCarer['healthcare_system_id']= $user->healthcare_system_id;
         $healthCarer['password'] = Str::random(8);
-        return HealthCarer::create($healthCarer);
+        $healthCarerDoc = HealthCarer::create($healthCarer);
+        $healthCarerDoc->roles()->attach($roles);
+        return $healthCarerDoc;
     }
 
     public static function getHealthCarer($healthCarerId){

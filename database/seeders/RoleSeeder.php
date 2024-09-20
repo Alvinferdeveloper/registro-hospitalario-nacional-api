@@ -27,6 +27,10 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'HealthCarerAdmin',
                 'for' => 'HEALTH_CARER'
+            ],
+            [
+                'name' => 'HealthCarerAssistant',
+                'for' => 'HEALTH_CARER'
             ]
             ]);
     }

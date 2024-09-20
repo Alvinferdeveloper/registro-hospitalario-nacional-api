@@ -30,6 +30,7 @@ class RegisterHealthCarerRequest extends FormRequest
             'identification' => 'required|string|max:20|unique:health_carers,identification',
             'birthdate' => 'required|date|before:today',
             'attention_center_id'=> 'nullable',
+            'roles' => 'array|nullable',
             'area'=> 'required|string|in:MEDICINA INTERNA, ADMINISTRACION',
             'type'=> 'required|string|in:DOCTOR,ENFERMERO,ADMIN',
             'phone_number' => 'required|string|min:8|max:15',

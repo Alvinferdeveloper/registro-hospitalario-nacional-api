@@ -39,7 +39,7 @@ class HealthCarerService
         $healthCarer['health_carer_creator'] = $user->id;
         $roles = $healthCarer['roles'];
         $healthCarer['healthcare_system_id'] = $user->healthcare_system_id;
-        $attentionCenterExist = Attentioncenter::where(['id' => $healthCarer['attention_center_id'], 'healthCare_system_id' => $user->healthcare_system_id])->first();
+        $attentionCenterExist = Attentioncenter::where(['id' => $healthCarer['attention_center_id'], 'healthcare_system_id' => $user->healthcare_system_id])->first();
         if(!$attentionCenterExist) throw new ModelNotFoundException();
         $healthCarer['password'] = Str::random(8);
         $healthCarerDoc = HealthCarer::create($healthCarer);

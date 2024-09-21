@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('summary');
             $table->longText('diagnosis');
             $table->longText('plan');
-            $table->uuid('attention_center_id');
+            $table->uuid('attention_center_id')->nullable();
             $table->foreign('attention_center_id')->references('id')->on('attention_centers');
             $table->timestamps();
         });

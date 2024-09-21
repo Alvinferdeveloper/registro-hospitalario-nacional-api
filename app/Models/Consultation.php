@@ -24,10 +24,10 @@ class Consultation extends Model
     }
 
     public function attentionCenter(){
-        return $this->belongsTo(AttentionCenter::class, 'patient_id');
+        return $this->belongsTo(AttentionCenter::class, 'attention_center_id');
     }
 
     public function healthCarer(){
-        return $this->belongsTo(HealthCarer::class, 'patient_id');
+        return $this->belongsTo(HealthCarer::class, 'health_carer_id');
     }
 }

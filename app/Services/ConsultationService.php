@@ -14,6 +14,10 @@ class ConsultationService{
            'attention_center_id' => $healthCarer->attention_center_id,
         ]);
     }
+
+    public static function getConsultations($patientId){
+        return Consultation::with('healthCarer')->where('patient_id', $patientId)->get();
+    }
 }
 
 ?>

@@ -15,4 +15,9 @@ class ConsultationController extends Controller
         $authUser = $request->user();
         ConsultationService::insertConsultation($requestValidated, $authUser);
     }
+
+    public function getConsultations($patientId){
+        $consultations = ConsultationService::getConsultations($patientId);
+        return response()->json(["consultations" => $consultations]);
+    }
 }

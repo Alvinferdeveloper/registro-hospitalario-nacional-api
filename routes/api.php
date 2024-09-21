@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\PatientController;
 use App\Http\Middleware\CheckUserRole;
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ Route::middleware(['auth:sanctum', 'checkrole:Admin'])->group(function () {
 
 Route::middleware(['auth:sanctum', 'checkrole:HealthCarerAdmin'])->group(function () {
     Route::post('/auth/HealthCarer/healthcarerregister',[AuthController::class, 'healthCarerRegisterByHealthCarer'] );
+    Route::post('/consultation/consultationRegister',[ConsultationController::class,'newConsultation']);
 });
 
 

@@ -18,10 +18,19 @@ Route::post('/auth/healthcarerlogin',[AuthController::class, 'healthCarerLogin']
 
 //HealtCarer
 Route::middleware(['auth:sanctum', 'checkrole:Admin,HealthCarerAdmin'])->group(function () {
-    Route::post('/auth/healthcarerregister',[AuthController::class, 'healthCarerRegister'] );
     Route::get('/patient/getPatientByHealthCarer/{id}', [PatientController::class, 'getPatientByHealthCarer']);
     Route::get('/patient/getPatients', [PatientController::class, 'getPatients']);
 });
+
+Route::middleware(['auth:sanctum', 'checkrole:Admin'])->group(function () {
+    Route::post('/auth/Admin/healthcarerregister',[AuthController::class, 'healthCarerRegisterByAdmin'] );
+});
+
+Route::middleware(['auth:sanctum', 'checkrole:HealthCarerAdmin'])->group(function () {
+    Route::post('/auth/HealthCarer/healthcarerregister',[AuthController::class, 'healthCarerRegisterByHealthCarer'] );
+});
+
+
 
 
 Route::middleware(['auth:sanctum', 'checkrole:USER'])->group(function () {

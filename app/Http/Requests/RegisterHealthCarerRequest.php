@@ -30,7 +30,7 @@ class RegisterHealthCarerRequest extends FormRequest
             'identification' => 'required|string|max:20|unique:health_carers,identification',
             'birthdate' => 'required|date|before:today',
             'attention_center_id'=> 'nullable',
-            'roles' => 'array|nullable',
+            'roles' => 'array',
             'area'=> 'required|string|in:MEDICINA INTERNA, ADMINISTRACION',
             'type'=> 'required|string|in:DOCTOR,ENFERMERO,ADMIN',
             'phone_number' => 'required|string|min:8|max:15',
@@ -38,6 +38,13 @@ class RegisterHealthCarerRequest extends FormRequest
             
         ];
     }
+    public function rulesWithoutNullable(): array
+    {
+        $rules = $this->rules();
+        $rules['attention_center_id'] = 'required';
+        return $rules;
+    }
+
     public function failedValidation(Validator $validator){
         throw new HttpResponseException(response()->json([
             'data' => null,

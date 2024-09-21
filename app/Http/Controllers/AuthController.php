@@ -40,10 +40,17 @@ class AuthController extends Controller
         }
     }
 
-    public function healthCarerRegister(RegisterHealthCarerRequest $request){
+    public function healthCarerRegisterByAdmin(RegisterHealthCarerRequest $request){
         $user = $request->user();
         $healthCarerValidated = $request->validated();
-        $healthCarer = HealthCarerService::registerHealthCarer($healthCarerValidated, $user);
+        $healthCarer = HealthCarerService::registerHealthCarerByAdmin($healthCarerValidated, $user);
+        return response()->json(['healtCarer'=> $healthCarer],200);
+    }
+
+    public function healthCarerRegisterByHealthCarer(RegisterHealthCarerRequest $request){
+        $user = $request->user();
+        $healthCarerValidated = $request->validate($request->rulesWithoutNullable());
+        $healthCarer = HealthCarerService::registerHealthCarerByHealthCarer($healthCarerValidated, $user);
         return response()->json(['healtCarer'=> $healthCarer],200);
     }
 

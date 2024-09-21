@@ -16,7 +16,7 @@ class ConsultationService{
     }
 
     public static function getConsultations($patientId){
-        return Consultation::with('healthCarer')->where('patient_id', $patientId)->get();
+        return Consultation::with(['healthCarer','patient'])->where('patient_id', $patientId)->get();
     }
 }
 

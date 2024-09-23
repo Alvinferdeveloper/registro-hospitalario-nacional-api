@@ -20,4 +20,10 @@ class ConsultationController extends Controller
         $consultations = ConsultationService::getConsultations($patientId);
         return response()->json($consultations);
     }
+
+    public function getPatientConsultations(Request $request){
+        $patientId = $request->user()->id;
+        $consultations = ConsultationService::getPatientConsultations($patientId);
+        return response()->json($consultations);
+    }
 }

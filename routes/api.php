@@ -33,6 +33,11 @@ Route::middleware(['auth:sanctum', 'checkrole:HealthCarerAdmin'])->group(functio
     Route::post('/consultation/consultationRegister',[ConsultationController::class,'newConsultation']);
 });
 
+Route::middleware(['auth:sanctum', 'checkrole:USER'])->group(function () {
+    Route::get('/consultation/getPatientConsultations',[ConsultationController::class, 'getPatientConsultations'] );
+});
+
+
 
 
 

@@ -18,8 +18,7 @@ class CheckUserRole
         $user = $request->user();
         if (method_exists($user, 'roles')) {
             $user->load('roles');
-            return $next($request);
-            if ($user->roles()->exists() && $user->roles()->whereIn('name', $role)->exists()) {
+            if ($user->roles()->exists() && $user->roles()->whereIn('name', $roles)->exists()) {
                 return $next($request);
             } 
         } else {

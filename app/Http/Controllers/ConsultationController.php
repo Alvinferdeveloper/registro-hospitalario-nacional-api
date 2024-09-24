@@ -26,4 +26,9 @@ class ConsultationController extends Controller
         $consultations = ConsultationService::getConsultations($patientId);
         return response()->json($consultations);
     }
+
+    public function getConsultationDetailsByHealthCarer($consultationId){
+        $consultationDetail = ConsultationService::getConsultationDetailsByHealthCarer($consultationId);
+        return response()->json($consultationDetail);
+    }
 }

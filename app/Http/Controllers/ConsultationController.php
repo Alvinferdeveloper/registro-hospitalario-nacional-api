@@ -16,14 +16,14 @@ class ConsultationController extends Controller
         ConsultationService::insertConsultation($requestValidated, $authUser);
     }
 
-    public function getConsultations($patientId){
+    public function getConsultationsByHealthCarer($patientId){
         $consultations = ConsultationService::getConsultations($patientId);
         return response()->json($consultations);
     }
 
-    public function getPatientConsultations(Request $request){
+    public function getConsultationsByPatient(Request $request){
         $patientId = $request->user()->id;
-        $consultations = ConsultationService::getPatientConsultations($patientId);
+        $consultations = ConsultationService::getConsultations($patientId);
         return response()->json($consultations);
     }
 }

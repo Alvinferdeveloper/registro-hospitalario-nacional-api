@@ -21,7 +21,7 @@ Route::post('/auth/healthcarerlogin',[AuthController::class, 'healthCarerLogin']
 Route::middleware(['auth:sanctum', 'checkrole:Admin,HealthCarerAdmin'])->group(function () {
     Route::get('/patient/getPatientByHealthCarer/{id}', [PatientController::class, 'getPatientByHealthCarer']);
     Route::get('/patient/getPatients', [PatientController::class, 'getPatients']);
-    Route::get('/consultation/getConsultationsByHealthCarer/{patientId}', [ConsultationController::class,'getConsultations']);
+    Route::get('/consultation/getConsultationsByHealthCarer/{patientId}', [ConsultationController::class,'getConsultationsByHealthCarer']);
 });
 
 Route::middleware(['auth:sanctum', 'checkrole:Admin'])->group(function () {

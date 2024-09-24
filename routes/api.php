@@ -36,6 +36,7 @@ Route::middleware(['auth:sanctum', 'checkrole:HealthCarerAdmin'])->group(functio
 
 Route::middleware(['auth:sanctum', 'checkrole:USER'])->group(function () {
     Route::get('/consultation/getConsultationsByPatient',[ConsultationController::class, 'getConsultationsByPatient'] );
+    Route::get('/consultation/getConsultationDetailsByPatient/{consultationId}',[ConsultationController::class, 'getConsultationDetailsByPatient'] );
 });
 
 

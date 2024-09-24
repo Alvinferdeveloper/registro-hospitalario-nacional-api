@@ -22,6 +22,10 @@ class ConsultationService{
     public static function getConsultationDetailsByHealthCarer($consultationId){
         return Consultation::with(['healthCarer','patient'])->where('id', $consultationId)->first();
     }
+
+    public static function getConsultationDetailsByPatient($patientId, $consultationId){
+        return Consultation::with(['healthCarer','patient'])->where(['id'=> $consultationId, 'patient_id' => $patientId])->first();
+    }
 }
 
 ?>

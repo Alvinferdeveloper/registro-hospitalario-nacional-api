@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\VaccineController;
 use App\Http\Middleware\CheckUserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::middleware(['auth:sanctum', 'checkrole:Admin,HealthCarerAdmin'])->group(f
     Route::get('/patient/getPatients', [PatientController::class, 'getPatients']);
     Route::get('/consultation/getConsultationsByHealthCarer/{patientId}', [ConsultationController::class,'getConsultationsByHealthCarer']);
     Route::get('/consultation/getConsultationDetailsByHealthCarer/{consultationId}',[ConsultationController::class,'getConsultationDetailsByHealthCarer']);
+    Route::get('/vaccines/getHealthcareSystemVaccines',[VaccineController::class,'getHealthCareSystemVaccines']);
 });
 
 Route::middleware(['auth:sanctum', 'checkrole:Admin'])->group(function () {

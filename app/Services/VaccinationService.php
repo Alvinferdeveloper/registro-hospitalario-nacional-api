@@ -15,6 +15,10 @@ use App\Models\DoctorVaccinatesPatient;
             'vaccine_code' => $requestBody['vaccineCode'],
         ]);
     }
+
+    public static function getVaccinationsByHealthcarer($patientId){
+        return DoctorVaccinatesPatient::with(['patient:id,name,lastName', 'healthcarer:id,name:lastName','vaccine'])->where('patient_id', $patientId)->get();
+    }
  }
 
 ?>

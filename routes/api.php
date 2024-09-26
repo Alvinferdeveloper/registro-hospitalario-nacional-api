@@ -27,6 +27,7 @@ Route::middleware(['auth:sanctum', 'checkrole:Admin,HealthCarerAdmin'])->group(f
     Route::get('/consultation/getConsultationDetailsByHealthCarer/{consultationId}',[ConsultationController::class,'getConsultationDetailsByHealthCarer']);
     Route::get('/vaccines/getHealthcareSystemVaccines',[VaccineController::class,'getHealthCareSystemVaccines']);
     Route::post('/vaccines/newVaccination',[VaccinationController::class,'newVaccination']);
+    Route::get('/vaccinations/getVaccinationsByHealthCarer/{patientId}',[VaccinationController::class,'getVaccinationsByHealthCarer']);
 });
 
 Route::middleware(['auth:sanctum', 'checkrole:Admin'])->group(function () {

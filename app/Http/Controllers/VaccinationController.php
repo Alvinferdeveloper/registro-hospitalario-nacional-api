@@ -15,4 +15,9 @@ class VaccinationController extends Controller
         $requestValidated = $request->validated();
         VaccinationService::insertVaccination($healthCarerId, $requestValidated);
     }
+
+    public function getVaccinationsByHealthCarer($patientId){
+        $vaccinations =VaccinationService::getVaccinationsByHealthcarer($patientId);
+        return response()->json($vaccinations);
+    }
 }

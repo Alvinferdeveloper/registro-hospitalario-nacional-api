@@ -19,6 +19,10 @@ use App\Models\DoctorVaccinatesPatient;
     public static function getVaccinationsByHealthcarer($patientId){
         return DoctorVaccinatesPatient::with(['patient:id,name,lastName', 'healthcarer:id,name:lastName','vaccine'])->where('patient_id', $patientId)->get();
     }
+
+    public static function getVaccinationsByPatient($patientId){
+        return DoctorVaccinatesPatient::with(['patient:id,name,lastName', 'healthcarer:id,name:lastName','vaccine'])->where('patient_id', $patientId)->get();
+    }
  }
 
 ?>

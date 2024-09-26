@@ -20,4 +20,9 @@ class VaccinationController extends Controller
         $vaccinations =VaccinationService::getVaccinationsByHealthcarer($patientId);
         return response()->json($vaccinations);
     }
+    public function getVaccinationsByPatient(Request $request){
+        $patientId = $request->user()->id;
+        $vaccinations =VaccinationService::getVaccinationsByPatient($patientId);
+        return response()->json($vaccinations);
+    }
 }

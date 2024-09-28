@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\VaccinationController;
 use App\Http\Controllers\VaccineController;
@@ -17,6 +18,8 @@ Route::get('/user', function (Request $request) {
 Route::post('/auth/register',[AuthController::class, 'register'] );
 Route::post('/auth/login',[AuthController::class, 'login'] );
 Route::post('/auth/healthcarerlogin',[AuthController::class, 'healthCarerLogin'] );
+
+Route::get('/departament/getDepartaments',[DepartamentController::class, 'getDepartaments'] );
 
 
 //HealtCarer

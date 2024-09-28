@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             AttentionCenterSeeder::class, 
             HealthCarerSeeder::class,
             HealthCarerRoleSeeder::class,
+            vaccineSeeder::class,
 
         ]);
     }

@@ -33,7 +33,7 @@ class RegisterUserRequest extends FormRequest
             'city' => 'required|string',
             'address' => 'required|string',
             'birth_certificate' => 'nullable|string|max:100',
-            'blood_type' => 'nullable|string|in:A+, A-, B+, B-, AB+, AB-, O+, O-',
+            'blood_type' => 'nullable|string|in:A+,A-,B+,B-,AB+,AB-,O+,O-',
             'marital_status' => 'required|string|in:SOLTERO,CASADO,DIVORCIADO,VIUDO, UNION LIBRE',
             'gender' => 'required|string|in:M,F',
             'phone_number' => 'required|string|min:8|max:15',

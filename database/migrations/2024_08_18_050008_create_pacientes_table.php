@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('lastName');
             $table->char('identification',16)->nullable();
             $table->string('birth_certificate')->nullable();
-            $table->enum('blood_type',['A+','A-','B+','B-','AB+', 'AB-','O+','O+'])->nullable();
+            $table->enum('blood_type',['A+','A-','B+','B-','AB+', 'AB-','O+'])->nullable();
             $table->enum('marital_status',['SOLTERO','CASADO','DIVORCIADO','VIUDO','UNION LIBRE']);
             $table->enum('gender',['M','F']);
             $table->foreignId('address_id')->constrained();

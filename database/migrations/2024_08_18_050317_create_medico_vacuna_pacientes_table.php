@@ -20,8 +20,7 @@ return new class extends Migration
             $table->foreignId('vaccine_id')->constrained();
             $table->date('date')->default(now());
             $table->integer('dose');
-            $table->uuid('attention_center_id');
-            $table->foreign('attention_center_id')->references('id')->on('attention_centers');
+            $table->string('address')->nullable();
             $table->string('vaccine_code')->nullable();
             $table->timestamps();
         });

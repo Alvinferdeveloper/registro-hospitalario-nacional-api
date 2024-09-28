@@ -26,7 +26,8 @@ class RegisterVaccinationRequest extends FormRequest
             'patientId' => 'required',
             'vaccineId' => 'required',
             'dose' => 'required',
-            'vaccineCode'=>'required'
+            'vaccineCode'=>'required',
+            'address' => 'nullable',
 
         ];
     }

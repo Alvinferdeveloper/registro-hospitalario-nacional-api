@@ -1,8 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\HealthcareSystem;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -31,6 +29,8 @@ class DatabaseSeeder extends Seeder
             HealthCarerSeeder::class,
             HealthCarerRoleSeeder::class,
             vaccineSeeder::class,
+            hospitalSeeder::class,
+            ImageSeeder::class,
 
         ]);
     }

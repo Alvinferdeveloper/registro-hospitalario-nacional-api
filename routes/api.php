@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\DepartamentController;
+use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\VaccinationController;
 use App\Http\Controllers\VaccineController;
@@ -20,7 +21,7 @@ Route::post('/auth/login',[AuthController::class, 'login'] );
 Route::post('/auth/healthcarerlogin',[AuthController::class, 'healthCarerLogin'] );
 
 Route::get('/departament/getDepartaments',[DepartamentController::class, 'getDepartaments'] );
-
+Route::get('/hospital/getHospitals',[HospitalController::class, 'getHospitals'] );
 
 //HealtCarer
 Route::middleware(['auth:sanctum', 'checkrole:Admin,HealthCarerAdmin'])->group(function () {

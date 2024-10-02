@@ -13,4 +13,7 @@ class Hospital extends Model
     public function images(){
         return $this->hasMany(Image::class,'entity_id');
     }
+    public function address(){
+        return $this->belongsTo(Address::class,'address_id');
+    }
 }

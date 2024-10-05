@@ -7,6 +7,7 @@ class ConsultationService{
     public static function insertConsultation($requestBody, $healthCarer){
         return Consultation::create([
            'patient_id' =>  $requestBody['patientId'],
+           'reason' => $requestBody['reason'],
            'health_carer_id' => $healthCarer->id,
            'summary' => $requestBody['summary'],
            'diagnosis' => $requestBody['diagnosis'],

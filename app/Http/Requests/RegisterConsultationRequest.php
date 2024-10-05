@@ -23,6 +23,7 @@ class RegisterConsultationRequest extends FormRequest
     {
         return [
             //
+            'reason' => 'required',
             'patientId' => 'required',
             'summary' => 'required',
             'diagnosis' => 'required',

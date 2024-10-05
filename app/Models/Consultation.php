@@ -12,6 +12,7 @@ class Consultation extends Model
         'id',
         'patient_id',
         'health_carer_id',
+        'reason',
         'date',
         'summary',
         'diagnosis',

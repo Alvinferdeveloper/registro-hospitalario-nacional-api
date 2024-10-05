@@ -19,6 +19,7 @@ return new class extends Migration
             $table->uuid('health_carer_id');
             $table->foreign('health_carer_id')->references('id')->on('health_carers');
             $table->timestamp('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('reason');
             $table->longText('summary');
             $table->longText('diagnosis');
             $table->longText('plan');

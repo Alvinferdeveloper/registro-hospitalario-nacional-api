@@ -21,7 +21,7 @@ class AuthController extends Controller
         $addressDoc =  AddressService::insertAddress($validatedPatient);
         $patientDoc =  PatientService::registerPatient($validatedPatient, $addressDoc->id);
         $token = $patientDoc->createToken('Personal Access Token')->plainTextToken;
-        return response()->json([ "token"=> $token], 201);
+        return response()->json([ "token"=> $token, 'patient'=> $patientDoc], 201);
     }
 
     public function login(Request $request){
@@ -30,7 +30,7 @@ class AuthController extends Controller
         $patient = PatientService::patientRegistered($userName, $password);
         if($patient){
             $token = $patient->createToken('Personal Access Token')->plainTextToken;
-            return response()->json(['token'=>$token],200);
+            return response()->json(['token'=>$token, 'patient'=> $patient],200);
         }
         else {
             return response()->json([
@@ -60,7 +60,7 @@ class AuthController extends Controller
         $healthCarer = HealthCarerService::healtCarerRegistered($userName, $password);
         if($healthCarer){
             $token = $healthCarer->createToken('Personal Access Token')->plainTextToken;
-            return response()->json(['token'=>$token],200);
+            return response()->json(['token'=>$token, 'healthCarer'=> $healthCarer],200);
         }
         else {
             return response()->json([

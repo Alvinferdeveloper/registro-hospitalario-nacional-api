@@ -17,4 +17,8 @@ class PatientPlanService
             ]);
         }
     }
+
+    public static function getPatientPlansByPatient($patientId){
+        return PatientPlan::where(['patient_id' => $patientId])->get();
+    }
 }

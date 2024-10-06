@@ -5,6 +5,7 @@ use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientPlanController;
 use App\Http\Controllers\VaccinationController;
 use App\Http\Controllers\VaccineController;
 use App\Http\Middleware\CheckUserRole;
@@ -48,6 +49,7 @@ Route::middleware(['auth:sanctum', 'checkrole:USER'])->group(function () {
     Route::get('/consultation/getConsultationsByPatient',[ConsultationController::class, 'getConsultationsByPatient'] );
     Route::get('/consultation/getConsultationDetailsByPatient/{consultationId}',[ConsultationController::class, 'getConsultationDetailsByPatient'] );
     Route::get('/vaccinations/getVaccinationsByPatient',[VaccinationController::class,'getVaccinationsByPatient']);
+    Route::get('/patientPlans/getPatientPlansByPatient',[PatientPlanController::class,'getPatientPlansByPatient']);
 });
 
 

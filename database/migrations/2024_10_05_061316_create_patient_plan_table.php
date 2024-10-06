@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreign('healthCarer_id')->references('id')->on('health_carers');
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamp('date')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->string('plan');
+            $table->string('medicament');
+            $table->string('prescription');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

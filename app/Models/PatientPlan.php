@@ -9,7 +9,7 @@ class PatientPlan extends Model
 {
     use HasFactory;
     protected $table = 'patient_plans';
-    protected $fillable = ['healthCarer_id','patient_id','plan'];
+    protected $fillable = ['healthCarer_id','patient_id','medicament', 'prescription'];
 
     public function patient(){
         return $this->belongsTo(Patient::class, 'patient_id');

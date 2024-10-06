@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterConsultationRequest;
 use App\Services\ConsultationService;
+use App\Services\PatientPlanService;
 use Illuminate\Http\Request;
 
 class ConsultationController extends Controller
@@ -12,8 +13,11 @@ class ConsultationController extends Controller
     //
     public function newConsultation(RegisterConsultationRequest $request){
         $requestValidated = $request->validated();
-        $authUser = $request->user();
-        ConsultationService::insertConsultation($requestValidated, $authUser);
+        $healthCarer = $request->user();
+        $patientPlans = $requestValidated['patientPlans'];
+        $patientId = $requestValidated['patientId'];
+        ConsultationService::insertConsultation($requestValidated, $healthCarer);
+        PatientPlanService::insertPatientPlans($patientPlans, $healthCarer->id, $patientId);
     }
 
     public function getConsultationsByHealthCarer($patientId){

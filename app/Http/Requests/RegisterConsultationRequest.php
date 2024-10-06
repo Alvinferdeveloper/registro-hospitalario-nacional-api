@@ -28,6 +28,7 @@ class RegisterConsultationRequest extends FormRequest
             'summary' => 'required',
             'diagnosis' => 'required',
             'plan' => 'required',
+            'patientPlans' => 'array|nullable',
         ];
     }
 }
